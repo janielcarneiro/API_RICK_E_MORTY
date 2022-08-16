@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rick e morty</title>
+</head>
+<body>
+    
+
+    <div class="conteiner">
+        <style>
+            body {
+                margin: 0;
+            }
+
+            .conteiner{
+                width: 100%;
+                background: black;
+                display: flex;
+                display: inline-block;
+                text-align: center;
+                
+            }
+        </style>
+    </div>
+
+    <script>
+        fetch('https://rickandmortyapi.com/api/character',{
+            method: 'GET'
+        }).then(response => response.json()).then(function(json){
+            var conteiner = document.querySelector('.conteiner')
+        
+        json.results.map(function(results){
+            console.log(json);
+            conteiner.innerHTML+=`
+                <div> <img src=` + results.image + `></div>
+                <h3 style="color: blue" >`+results.name+`</h3>
+                <h3 style="color: blue" >`+results.gender+`</h3>
+                <h3 style="color: blue" >`+results.species+`</h3>
+                <h3 style="color: blue" >`+results.status+`</h3>
+                <hr>
+            `
+        })
+        })
+    </script>
+</body>
+</html>
